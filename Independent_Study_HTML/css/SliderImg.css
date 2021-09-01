@@ -1,0 +1,8 @@
+/*幻燈片特效*/
+#sliderImg {
+    opacity: 1; /*透明度 0~1*/
+    transition: 1s; /*延遲1s*/
+}
+#sliderImg.fadeOut {
+    opacity:0; /*透明度 0~1*/
+}

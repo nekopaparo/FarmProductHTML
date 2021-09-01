@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+
+    <style>
+        @import url(css/InputTextImitateGoogle.css);
+        body{
+            display: flex;
+            align-items: center; /*垂直置中*/
+            justify-content: center; /*水平置中*/
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            background: url(images/singInbg.jpg); /*背景圖片*/
+            background-size: 100% 100%;
+        }
+        /**/
+        .main{
+            padding: 0.5%;
+            display:inline-block;
+            height: 60%;
+            width: 20%;
+            border:0.5vh black solid;
+            background-color: white;
+        }
+        .picture{
+            height: 30%; /*1.*/
+            width: 100%;
+            box-sizing:border-box; /* 使元素的寬度包括padding margin, border*/
+            border:1px black solid;
+        }
+        .picture img{
+            height: 100%;
+            width: 100%;
+        }
+        .title{
+            display: flex;
+            align-items: center; /*垂直置中*/
+            justify-content: center; /*水平置中*/
+            font-size: 5vh;
+            height: 15%; /*2.*/
+            width: 100%;
+            box-sizing:border-box; /* 使元素的寬度包括padding margin, border*/
+            white-space:nowrap; /*不換行*/
+            overflow: hidden; /* 超過範圍隱藏 */
+        }
+        .blank{
+            height: 5%; /*3.*3 */
+        }
+        .InputTextImitateGoogle_body{
+            height: 15%; /* 4.*2 */
+        }
+        .submit{
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 10%; /* 5. */
+        }
+        .other{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            overflow: hidden; /* 超過範圍隱藏 */
+            font-size: 2vh;
+        }
+        .submit input{
+            position: absolute;
+            height: 80%;
+            width: 20%;
+            font-size: 2vh;
+            right: 0;
+        }
+        
+    </style>
+    <script src="js/jQuery.js"></script>
+    <script src="js/InputTextImitateGoogleUse.js"></script>
+    <script src="js/Cookie.js"></script>
+    <script src="js/getLoginCookie.js"></script>
+    <script>
+        if(document.cookie.match(".*singIn=false.*")){
+            delCookie("singIn");
+            /*
+            //delete,屬性也要一樣才會覆蓋，不然會變新的變數
+        	document.cookie = "singIn=null;" + "path=/Independent_Study;" + "max-age=1";
+            */
+        	alert("帳號或密碼錯誤");
+   		}
+    </script>
+</head>
+<body >
+    <form action="UserRead" class="main" method="POST">
+        <div class="picture">
+            <img src="images/singInTitle.png">
+        </div>
+        <div class="blank"></div>
+        <div class="title">會員登入</div>
+        <div class="blank"></div>
+        <div class="InputTextImitateGoogle_body">
+            <div id="InputData_usernameId" class="InputTextImitateGoogle_close">請輸入帳號</div>
+            <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                <input id="usernameId" name="username" class="InputTextImitateGoogle_input" type="text" onfocus="inputFocus(0)" onblur="inputBlur(0)">
+            </div>
+        </div>
+        <div class="blank"></div>
+        <div class="InputTextImitateGoogle_body">
+            <div id="InputData_passwdId" class="InputTextImitateGoogle_close">請輸入密碼</div>
+            <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                <input id="passwdId" name="passwd" class="InputTextImitateGoogle_input" type="password" onfocus="inputFocus(1)" onblur="inputBlur(1)" >
+            </div>  
+        </div>
+        <div class="submit">
+            <div class="other">
+                <div>
+                    <a href="SingUp.html">申請會員</a><br>
+                    <a href="Maintenance.html">忘記帳號密碼</a>
+                </div>
+            </div>
+            <input type="button" value="登入" onclick="getLoginCookie();">
+        </div>
+    </form>
+</body>
+
+</html>
