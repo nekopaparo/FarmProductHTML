@@ -1,0 +1,27 @@
+<!--施弘泰 11000143700002-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>檢查ID</title>
+	<script>
+	  function checkID()
+	  {
+	    //以正則檢查身分證字號格式是否正確
+		var ID = document.myform.id.value.toUpperCase();
+		if( ID.match("[A-Z](1|2)[0-9]{8}") )
+			document.myform.submit();
+		else
+			confirm("身分證字號格式有誤");
+	  }
+	</script>
+</head>
+<body text="blue">
+	<form method="post" name="myform" action="/doCheckID">
+	  身分證字號：<input type="text" name="id" size="20">
+	  <p>
+	  <input type="button" value="傳送" onclick="checkID();">
+	  <input type="reset" value="重填">
+	</form>
+  </body>
+</html>
