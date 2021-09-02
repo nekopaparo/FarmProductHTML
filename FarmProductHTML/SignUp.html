@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員申請</title>
+    <style>
+        @import url(css/InputTextImitateGoogle.css);
+        .InputTextImitateGoogle_body{
+            height: 12%;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            background: url(images/SingUpbg.jpg); /*背景圖片*/
+            background-size: 100% 100%;
+        }
+        .singUpHome {
+            height: 80%;
+            width: 30%;
+            border: 3px black solid;
+            padding: 2%;
+            background-color: white;
+        }
+        .singUpHome legend {
+            font-size: 3vw;
+            font-weight: 900;
+        }
+        form {
+            height: 95%;
+            width: 100%;
+            background-color: white;
+            overflow-y: scroll; /*字超過變滑動*/
+            overflow-x: hidden; /*取消左右*/
+            padding-top: 2%;
+        }
+        .br {
+            height: 6%;
+            color: red;
+        }
+        .submitHome {
+            height: 5%;
+            width: 100%;
+        }
+        .submitHome input {
+            height: 100%;
+            float: right;
+            margin-left: 3%;
+        }
+    </style>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/InputTextImitateGoogleUse.js"></script>
+    <script src="js/Cookie.js"></script>
+    <script src="js/MySQL.js"></script>
+    <script>
+        //身分證檢查
+        function identCheck(){
+            var identID = document.getElementById("identId").value.toUpperCase();
+            if(!isValue("identId")) return false;
+            if( !identID.match("[A-Z](1|2)[0-9]{8}") ){
+                document.getElementById("identId").select();
+                document.getElementById("identId").focus();
+                $("#identIderror").text("格式錯誤"); //警告訊息
+                return false;
+            }
+            else{
+                $("#identIderror").text(""); //清空警告訊息
+                return true;
+            }
+        }
+        //email檢查
+        function emailCheck(){
+            var Email = document.getElementById("emailId").value;
+            if( !isValue("emailId")) return false;
+            if(Email.indexOf("@gmail.com") < 0){
+                $("#emailIderror").text("只接受Google信箱"); //警告訊息
+                    document.getElementById("emailId").select();
+                    document.getElementById("emailId").focus();
+                    return false;
+                }
+            else if( !Email.match("[A-Za-z0-9.]{6,30}@gmail.com")  ){
+                $("#emailIderror").text("格式錯誤"); //警告訊息
+                document.getElementById("emailId").select();
+                document.getElementById("emailId").focus();
+                return false;
+            }
+            else {
+                $("#emailIderror").text(""); //清空警告訊息
+                return true;
+            }                                   
+        }
+        var isPasswd = false;
+        //密碼檢查
+        function passwdCheck(){
+            var passwd = document.getElementById("passwdId");
+            var confirmation = document.getElementById("confirmationId");
+            if(!isValue("passwdId")){
+                $("#passwdIderror").text("請輸入密碼"); //警告訊息
+                confirmation.value = "";
+                passwd.focus();
+                isPasswd = false;
+                return false;
+            }
+            else{
+                if(!isPasswd){
+                    isPasswd = true;
+                    return false;
+                }
+            }
+            $("#passwdIderror").text(""); //清空警告訊息
+            if(confirmation.value != passwd.value){
+                confirmation.focus();
+                confirmation.select();
+                $("#confirmationIderror").text("輸入的密碼不一致"); //警告訊息
+                return false;
+            }
+            else{
+                $("#confirmationIderror").text(""); //清空警告訊息
+                return true;
+            }
+        }
+        //檢查是否空白
+        function isValue(checkID){
+            if( document.getElementById(checkID).value.length == 0){
+                $("#" + checkID).focus();
+                $("#" + checkID + "error").text("請填寫資料"); //警告訊息
+                return false;
+            }
+            else{
+                $("#" + checkID + "error").text(""); //清空警告訊息
+                return true;
+            }
+        }
+        //最後檢查
+        function lastCheck(){
+            if( isValue("usernameId") && isValue("accountId") && isValue("passwdId") && passwdCheck() && identCheck() && isValue("dateofbirthId") && emailCheck()){
+            	insert_into_addname_values_addvalue();
+                //document.userData.submit();
+            }
+            else{
+                alert("輸入資料有誤!!");
+            }
+        }
+        //重新填寫
+        function resetData(){
+            $(".br").text("");
+            document.userData.reset();
+        }
+        $(document).ready(function(){
+            $("#identId").change(identCheck);
+            $("#emailId").change(emailCheck);
+            $("#passwdId").change(passwdCheck);
+            $("#confirmationId").change(passwdCheck);
+            $("#submitButton").click(lastCheck);
+            $("#resetButton").click(resetData);
+            
+            //預設資料
+            InputData_usernameId.className = "InputTextImitateGoogle_open";
+            usernameId.value = "使用者";
+            InputData_identId.className = "InputTextImitateGoogle_open";
+            identId.value = "A123456789";
+            InputData_dateofbirthId.className = "InputTextImitateGoogle_open";
+            dateofbirthId.value = "2021-09-02"
+            InputData_emailId.className = "InputTextImitateGoogle_open";
+            emailId.value = "abc123456789@gmail.com";
+        });
+    </script>
+</head>
+<body>
+    <fieldset class="singUpHome">
+        <legend>填寫資料</legend>
+        <form name="userData" action="../useradd" method="post" >
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_usernameId" class="InputTextImitateGoogle_close">姓名</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="usernameId" name="username" class="InputTextImitateGoogle_input" type="text">
+                </div>
+            </div>
+            <div id="usernameIderror" class="br"></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_accountId" class="InputTextImitateGoogle_close">帳號</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="accountId" name="account" class="InputTextImitateGoogle_input" type="text">
+                </div>
+            </div>
+            <div id="useraccountIderror" class="br"></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_passwdId" class="InputTextImitateGoogle_close">密碼</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="passwdId" name="passwd" class="InputTextImitateGoogle_input" type="password">
+                </div>
+            </div>
+            <div id="passwdIderror" class="br" ></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_confirmationId" class="InputTextImitateGoogle_close">密碼確認</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="confirmationId" class="InputTextImitateGoogle_input" type="password">
+                </div>
+            </div>
+            <div id="confirmationIderror" class="br" ></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_identId" class="InputTextImitateGoogle_close">身分證字號</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="identId" name="ident" class="InputTextImitateGoogle_input" type="text" maxlength="10">
+                </div>
+            </div>
+            <div id="identIderror" class="br"></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_dateofbirthId" class="InputTextImitateGoogle_close">出生日期(yyyy/mm/dd)</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="dateofbirthId" name="dateofbirth" class="InputTextImitateGoogle_input" type="date">
+                </div>
+            </div>
+            <div id="dateofbirthIderror" class="br" ></div>
+            <div class="InputTextImitateGoogle_body">
+                <div id="InputData_emailId" class="InputTextImitateGoogle_close">信箱</div>
+                <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
+                    <input id="emailId" name="email" class="InputTextImitateGoogle_input" type="text">
+                </div>
+            </div>
+            <div id="emailIderror" class="br" ></div>            
+        </form>
+        <div class="submitHome">
+            <input id="submitButton" type="button" value="確認送出">
+            <input id="resetButton" type="button" value="重新填寫">
+        </div>
+    </fieldset>
+</body>
+</html>
