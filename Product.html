@@ -111,6 +111,7 @@
         .buyCarHome {
             height: 100%;
             width: 40%;
+            min-width: 1.5cm;
             border: 1px black solid;
         }
         /*庫存*/
@@ -132,6 +133,9 @@
             width: 47%;
             text-align: center; /*文字水平置中*/
             border-right: 1px black solid;
+            font-size: 0.5vw;
+            white-space:nowrap; /*不換行*/
+            overflow: hidden; /* 超過範圍隱藏 */
         }
         .buyQuantity {
             display: flex;
