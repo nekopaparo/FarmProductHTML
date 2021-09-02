@@ -9,7 +9,7 @@ var productData = ["P2021070411000101.jpg:蘋果:哈洽馬:2021/07/04:100:一包
 function SELECT_all_FROM_Commodity_WHERE_Commodity_id_productID(ID){
     productID.forEach(function(item, i){
         if(ID == item){
-            addCookie("productDetail", productID[i] + ":" + productData[i], "/FarmProductHTML/Product.html");
+            addCookie("productDetail", productID[i] + ":" + productData[i], "/hachahacha/FarmProductHTML/Product.html");
             document.location.href = "Product.html";
             return false;
         }
@@ -19,7 +19,7 @@ function BUYCARUSE_SELECT_all_FROM_Commodity_WHERE_Commodity_id_productID(ID){
     if(ID.length == 0) return false;
     productID.forEach(function(item, i){
         if(ID == item){
-            addCookie("productDetail", productID[i] + ":" + productData[i], "/Independent_Study/Product.html");
+            addCookie("productDetail", productID[i] + ":" + productData[i], "/hachahacha/Independent_Study/Product.html");
             document.location.href = "Product.html";
             return false;
         }
@@ -55,7 +55,7 @@ function insert_into_addname_values_addvalue(){
         });
         
         //指定cookie只能在登入頁面中讀取
-        addCookie(newID, data, "/FarmProductHTML/SignIn.html");
+        addCookie(newID, data, "/hachahacha/FarmProductHTML/SignIn.html");
         //顯示訊息
         alert("成功申請會員");
         document.location.href = "SignIn.html";
