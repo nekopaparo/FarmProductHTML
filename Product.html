@@ -128,25 +128,41 @@
             font-size: 1vw;
             font-weight: 900;
         }
+        .buyQuantity {
+            height: 35%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px black solid;
+            font-size: 1vw;
+        }
         /*購買數量*/
         .BUY {
             width: 47%;
             text-align: center; /*文字水平置中*/
             border-right: 1px black solid;
-            font-size: 0.5vw;
             white-space:nowrap; /*不換行*/
             overflow: hidden; /* 超過範圍隱藏 */
         }
-        .buyQuantity {
+        .buyIn-home{
+            width: 53%;
+            height: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            height: 35%;
-            border: 1px black solid;
-            font-size: 1vw;
+            align-items: center;
+        }
+        .buyIn-home div{
+            width: 30%;
+        }
+        .buyIn-home input{
+            width: 100%;
+        }
+        .buyIn-home img{ 
+            width: 100%;
         }
         .buyQuantity img {
-            width: 20%;
+            
             cursor: pointer; /*滑鼠特效*/
         }
         .buyQuantity img:hover {
@@ -306,10 +322,10 @@
                         <div class="buyCar">
                             <div class="buyQuantity">
                                 <div class="BUY">購買數量:</div>
-                                <div style=" width: 53%; display:flex; justify-content: center;">
-                                    <img src="images/subtract.png" onclick="buyQ(-1)">
-                                    <input id="buyIn" type="text" maxlength="2" value="1">
-                                    <img src="images/plus.png" onclick="buyQ(1)">
+                                <div class="buyIn-home">
+                                    <div><img src="images/subtract.png" onclick="buyQ(-1)"></div>
+                                    <input id="buyIn" type="text" maxlength="3" value="1">
+                                    <div><img src="images/plus.png" onclick="buyQ(1)"></div>
                                 </div>
                             </div>
                             <div class="goBuy" onclick="buyCar()">加入購物車</div>
