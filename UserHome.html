@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員管理</title>
+    <style>
+        @import url(css/header.css);
+        .main {
+            width: 100%;
+            height: 80vh;
+            display: flex;
+        }
+        .user-operate {
+            width: 3cm;
+        }
+        .user-operate-select{
+            cursor: pointer;
+        }
+        .user-operate-select:hover{
+            border: 2px blue solid;
+        }
+        .selected {
+            background-color: blanchedalmond;
+        }
+        #selectpageshow{
+        	width: 100%;
+        	height: 100%;
+            border: 1px red solid;
+        }
+    </style>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/Cookie.js"></script>
+    <script src="js/User.js"></script>
+    <script>
+        var pagearray = ["page1.html", "CommodityManagement.html", "page3.html"];
+        $(document).ready(function(){
+            var lastSelected = null;
+            $(".user-operate-select").click(function() {
+               if(lastSelected != null) lastSelected.classList.remove('selected');
+                this.classList.add('selected'); 
+                lastSelected = this;
+                selectpageshow.src = pagearray[this.id.split('_')[1]];
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header>
+        <!--回到首頁-->
+        <div id="header-home">
+            <a href="Homepage.html"><img src="./images/home_removebg.png"></a>
+        </div>
+        <!--其他功能-->
+        <div id="header-menu">
+            <div class="header-menu-isShow"><a href="SignIn.html">登入</a></div>
+            <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
+            <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
+        </div>
+    </header>
+    <hr>
+    <div class="main">
+        <div class="user-operate">
+            <div id="select_0" class="user-operate-select">會員管理</div>
+            <div id="select_1" class="user-operate-select">商品管理</div>
+            <div id="select_2" class="user-operate-select">訂單管理</div>
+        </div >
+        <iframe id="selectpageshow"></iframe>
+    </div>
+    <hr>
+</body>
+<script>
+	userState(); //使用者狀態
+</script>
+</html>
