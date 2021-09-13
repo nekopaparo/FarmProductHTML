@@ -89,6 +89,10 @@
             */
         	alert("帳號或密碼錯誤");
    		}
+        $(document).ready(function(){
+            inputFocus("usernameId");
+            inputFocus("passwdId");
+        });
     </script>
 </head>
 <body >
@@ -102,14 +106,14 @@
         <div class="InputTextImitateGoogle_body">
             <div id="InputData_usernameId" class="InputTextImitateGoogle_close">請輸入帳號</div>
             <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
-                <input id="usernameId" name="username" class="InputTextImitateGoogle_input" type="text" onfocus="inputFocus(0)" onblur="inputBlur(0)" placeholder="root">
+                <input id="usernameId" name="username" class="InputTextImitateGoogle_input" type="text" onfocus="inputFocus(0)" onblur="inputBlur(0)" value="root" placeholder="root">
             </div>
         </div>
         <div class="blank"></div>
         <div class="InputTextImitateGoogle_body">
             <div id="InputData_passwdId" class="InputTextImitateGoogle_close">請輸入密碼</div>
             <div class="InputTextImitateGoogle_OutsideFrameUseDiv">
-                <input id="passwdId" name="passwd" class="InputTextImitateGoogle_input" type="password" onfocus="inputFocus(1)" onblur="inputBlur(1)" placeholder="1234">
+                <input id="passwdId" name="passwd" class="InputTextImitateGoogle_input" type="password" onfocus="inputFocus(1)" onblur="inputBlur(1)" value="1234" placeholder="1234">
             </div>  
         </div>
         <div class="submit">

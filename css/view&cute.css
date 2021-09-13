@@ -1,0 +1,38 @@
+@charset "UTF-8";
+#view_cuteMain {
+    width: 300px;
+    border: 1px black solid;
+}
+.img-view-home {
+    width: 100%;
+    height: 300px;
+    position: relative;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /*超過隱藏*/
+    border: 1px black solid;
+}
+#imgView {
+    position: absolute;
+    cursor: move; /*滑鼠游標*/
+    user-select: none; /*取消選取*/
+    -webkit-user-drag: none; /*draggable="false" => 取消圖片拖拉*/
+}
+.img-cute-range { /*裁切範圍*/
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    /*border-radius:50%; /*(width = height) + border-radius = 圓形*/
+    pointer-events: none;/*不被點擊到*/
+    border: 1px black solid;
+}
+.img-size-range-home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px black solid;
+}
+#canvas {
+    display: none;
+}
