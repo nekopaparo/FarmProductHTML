@@ -195,7 +195,7 @@
             color: deepskyblue;
         }
     </style>
-    <script src="js/User.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/Cookie.js"></script>
     <script>
         //無商品資料時回到首頁
@@ -299,6 +299,7 @@
             <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
             <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
         </div>
+        <script>userState();</script>
     </header>
     <hr>
     <div class="detailHome">
@@ -350,7 +351,5 @@
     for(var i=0; i<8; i++){
         document.getElementsByName("product")[i].innerHTML += productDetail[i+1];
     }
-    //登出
-    userState(); 
 </script>
 </html>
