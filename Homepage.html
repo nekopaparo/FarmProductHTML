@@ -60,7 +60,7 @@
     <script src="js/SliderImg.js"></script>
     <script src="js/Cookie.js"></script>
     <script src="js/MySQL.js"></script>
-    <script src="js/User.js"></script>
+    <script src="js/header.js"></script>
     <script>
         //跳轉網頁
         function imgForward(){
@@ -87,6 +87,7 @@
             <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
             <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
         </div>
+        <script>userState(); //使用者狀態</script>
     </header>
     <!--產品推薦-->
     <hr>
@@ -108,8 +109,5 @@
         <div><input  type="button" value="搜尋" onclick="document.location.href = 'Maintenance.html'"></div>
     </div>
 </body>
-<script>  
-    slideShow();
-    userState(); //使用者狀態
-</script>
+<script>slideShow();</script>
 </html>

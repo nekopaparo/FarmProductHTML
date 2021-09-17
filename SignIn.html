@@ -2,7 +2,6 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登入</title>
 
@@ -74,19 +73,14 @@
             font-size: 2vh;
             right: 0;
         }
-        
     </style>
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/InputTextImitateGoogleUse.js"></script>
     <script src="js/Cookie.js"></script>
     <script src="js/getLoginCookie.js"></script>
     <script>
-        if(document.cookie.match(".*userState=false.*")){
-            delCookie("userState");
-            /*
-            //delete,屬性也要一樣才會覆蓋，不然會變新的變數
-        	document.cookie = "singIn=null;" + "path=/Independent_Study;" + "max-age=1";
-            */
+        if(myCookie.get("userState")){
+            myCookie.remove("userState");
         	alert("帳號或密碼錯誤");
    		}
         $(document).ready(function(){

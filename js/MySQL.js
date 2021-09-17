@@ -9,7 +9,7 @@ var productData = ["P2021070411000101.jpg:蘋果:哈洽馬:2021/07/04:100:一包
 function SELECT_all_FROM_Commodity_WHERE_Commodity_id_productID(ID){
     productID.forEach(function(item, i){
         if(ID == item){
-            addCookie("productDetail", productID[i] + ":" + productData[i], "/FarmProductHTML/Product.html");
+            myCookie.add("productDetail", productID[i] + ":" + productData[i], "/Product.html"); // /FarmProductHTML
             document.location.href = "Product.html";
             return false;
         }
@@ -19,7 +19,7 @@ function BUYCARUSE_SELECT_all_FROM_Commodity_WHERE_Commodity_id_productID(ID){
     if(ID.length == 0) return false;
     productID.forEach(function(item, i){
         if(ID == item){
-            addCookie("productDetail", productID[i] + ":" + productData[i], "/FarmProductHTML/Product.html");
+            myCookie.add("productDetail", productID[i] + ":" + productData[i], "/Product.html"); // /FarmProductHTML
             document.location.href = "Product.html";
             return false;
         }
@@ -31,8 +31,8 @@ function insert_into_addname_values_addvalue(){
     var newID = "A000000001";
     var idCreated = true;
     //系統建立會員ID，最多可新增9組會員
-    if(isCookie("userID")){
-        var userID = getCookieValue("userID");
+    if(myCookie.get("userID")!=null){
+        var userID = myCookie.get("userID");
         for(var i=2; i<10; i++){
             newID = "A00000000" + i;
             if(!userID.match(newID)){ //userID還未建立
@@ -41,11 +41,11 @@ function insert_into_addname_values_addvalue(){
             if(i==9) idCreated = false;
         }
         if(idCreated){
-            addCookie("userID", getCookieValue("userID") + ":" + accountId.value + "," + newID);
+            myCookie.add("userID", myCookie.get("userID") + ":" + accountId.value + "," + newID);
         }
     }
     else{
-        addCookie("userID", accountId.value + "," + newID);
+        myCookie.add("userID", accountId.value + "," + newID);
     }
     //建立會員資料
     var data = "";
@@ -55,7 +55,7 @@ function insert_into_addname_values_addvalue(){
         });
         
         //指定cookie只能在登入頁面中讀取
-        addCookie(newID, data, "/FarmProductHTML/SignIn.html");
+        myCookie.add(newID, data, "/FarmProductHTML/SignIn.html");
         //顯示訊息
         alert("成功申請會員");
         document.location.href = "SignIn.html";

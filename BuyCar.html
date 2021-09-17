@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuyCar</title>
-    <script src="js/User.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/Cookie.js"></script>
     <script src="js/MySQL.js"></script>
     <style>
@@ -227,6 +227,7 @@
             <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
             <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
         </div>
+        <script>userState();</script>
     </header>
     <hr>
     <div class="listHome">
@@ -289,6 +290,5 @@
 <script>
     //顯示總價
     document.getElementById("totalPrice").innerHTML = sum;
-    userState();
 </script>
 </html>

@@ -34,7 +34,7 @@
     </style>
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/Cookie.js"></script>
-    <script src="js/User.js"></script>
+    <script src="js/header.js"></script>
     <script>
         var pagearray = ["page1.html", "CommodityManagement.html", "page3.html"];
         $(document).ready(function(){
@@ -61,6 +61,7 @@
             <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
             <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
         </div>
+        <script>userState();</script>
     </header>
     <hr>
     <div class="main">
@@ -73,7 +74,4 @@
     </div>
     <hr>
 </body>
-<script>
-	userState(); //使用者狀態
-</script>
 </html>
