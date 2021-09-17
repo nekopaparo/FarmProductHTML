@@ -1,4 +1,3 @@
-console.log('success');
 var myCookie = {
     //cookieName已存在且屬性相同時，舊的會被刪除並從最後面加入
     "add" : function (name, value, path, age){ //指定存取權限
@@ -13,7 +12,6 @@ var myCookie = {
     },
     //讀取cookValue
     "get" : function (name, key){
-        
         if(document.cookie.match(name+'=')){
             const values = document.cookie.split(name + '=');
             if(values[0] == ""){

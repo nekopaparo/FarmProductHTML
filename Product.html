@@ -198,8 +198,8 @@
     <script src="js/header.js"></script>
     <script>
         //無商品資料時回到首頁
-        if( myCookie.get("productDetail")){
-            alert("ERROR_PRODUCT!!!");
+        if( myCookie.get("productDetail")==null){
+            alert(myCookie.get("productDetail"));
             document.location.href = "Homepage.html";
         }
         const productDetail = myCookie.get("productDetail", ":");
@@ -351,4 +351,5 @@
         document.getElementsByName("product")[i].innerHTML += productDetail[i+1];
     }
 </script>
+
 </html>
