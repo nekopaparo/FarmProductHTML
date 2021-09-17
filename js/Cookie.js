@@ -1,37 +1,48 @@
-//最後修改日期:2021/09/01
-//顯示cookie
-function showCookie(){
-    const cookie = document.cookie;
-    alert(cookie);
-}
-//cookieName已存在且屬性相同時，舊的會被刪除並從最後面加入
-function addCookie(cookieName, cookieValue){
-    document.cookie = cookieName + "=" + cookieValue + ";  max-age=1800"; //max-age=1800 -> cookie 30分鐘後失效 
-}
-function addCookie(cookieName, cookieValue, path){ //指定存取權限
-    document.cookie = cookieName + "=" + cookieValue + "; path=" + path + "; max-age=1800";//path -> 指定誰有讀取權限
-}
-//cookieName是否存在
-function isCookie(cookieName){
-    if(cookieName.length > 0 && document.cookie.match(cookieName)) return true;
-    else return false;
-}
-//讀取cookValue
-function getCookieValue(cookieName){
-    if(isCookie(cookieName)) return document.cookie.split(cookieName + "=")[1].split(";")[0];
-    else return null; 
-}
-function getCookieInnerValue(cookieName, key){
-    var value = getCookieValue(cookieName);
-    if(value != null) return value.split(key);
-    else return null;
-}
-//刪除 ps.要同樣的屬性才能刪除成功
-function delCookie(cookieName){
-    document.cookie = cookieName + "=" + "; max-age=1";
-}
-function delCookie(cookieName, cookiePath){
-    document.cookie = cookieName + "=" + "; path=" + cookiePath + "; max-age=1";
+var myCookie = {
+    //cookieName已存在且屬性相同時，舊的會被刪除並從最後面加入
+    "add" : function (name, value, path, age){ //指定存取權限
+        var addValue = name + '=' + value + ';';
+        switch(arguments.length){
+            case 4:
+                addValue += "max-age=" + age + ';'
+            case 3: 
+                addValue += "path=" + path + ';'
+        }
+        document.cookie = addValue;
+    },
+    //讀取cookValue
+    "ishas" : function (name){
+        if(document.cookie.match(name+"=") === null) return false;
+        return true;
+    },
+    //讀取cookValue
+    "get" : function (name, key){
+        if(this.ishas(name)){
+            const values = document.cookie.split(name + "=");
+            if(values[0]===""){
+                const value = values[1].split(';')[0];
+                return key?  value.split(key):value;
+            }
+            var i = 0;
+            while(i<values.length){
+                if(values[i].match(/\s$/)){
+                    const value = values[i+1].split(';')[0];
+                    return key?  value.split(key):value;
+                }
+                i++;
+            }
+        }
+        return null;
+    },
+    //刪除 ps.要同樣path才能刪除成功
+    "remove" : function (name, path){
+        var removeValue = name + "=;";
+        if(path) removeValue += "path=" + path + ';';
+        var date = new Date();
+        date.setTime(date.getTime()-1);
+        removeValue += "expires=" + date.toGMTString();
+        document.cookie = removeValue;
+    }
 }
 /*參考 https://shubo.io/cookies/
 function getCookie() {

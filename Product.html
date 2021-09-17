@@ -199,11 +199,11 @@
     <script src="js/Cookie.js"></script>
     <script>
         //無商品資料時回到首頁
-        if( !isCookie("productDetail")){
+        if( !myCookie.ishas("productDetail")){
             alert("ERROR_PRODUCT!!!");
             document.location.href = "Homepage.html";
         }
-        const productDetail = getCookieInnerValue("productDetail", ":");  
+        const productDetail = myCookie.get("productDetail", ":");  
         var buyInV;
         function starDraw(quantity){
             for(i=0; i<quantity; i++){
@@ -258,26 +258,26 @@
                 buyIn.select();
                 return false;
             }
-            var carlist = getCookieValue("buyCars");
+            var carlist = myCookie.get("buyCars");
             //商品ID
             var pID = productDetail[0];
             //已登入會員
-            if(getCookieValue("userState")){
+            if(myCookie.get("userState")){
                 //已有購物清單
-                if( isCookie("buyCars") ){
+                if( myCookie.ishas("buyCars") ){
                     //已加入購物車
                     if(carlist.match(pID)){
                         alert("已加入購物車");
                         return false;
                     }
-                    addCookie("buyCars", carlist + ":" + pID); //新增商品ID
+                    myCookie.add("buyCars", carlist + ":" + pID); //新增商品ID
                 }
                 //尚未有購物清單
                 else{
-                    addCookie("buyCars", pID); //新增購物車
+                    myCookie.add("buyCars", pID); //新增購物車
                 }
                 var byCar = productDetail[1] + ":" + productDetail[2] + ":" + productDetail[5] + ":" + buyIn.value;
-                addCookie("buyCar" + pID, byCar, "/FarmProductHTML/BuyCar.html") //******************************
+                myCookie.add("buyCar" + pID, byCar, "/FarmProductHTML/BuyCar.html") //******************************
                 alert("成功加入購物車");
             }
             else{

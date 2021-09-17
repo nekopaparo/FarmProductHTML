@@ -149,12 +149,12 @@
     </style>
     <script>
         //無購物車資料
-        if(!isCookie("buyCars") || getCookieValue("buyCars") == ""){
+        if(!myCookie.ishas("buyCars") || myCookie.get("buyCars") == ""){
             alert("查無購物車資料!!!")
             history.back();//返回上一頁
         }
         //商品ID紀錄
-        const buyCarID = getCookieValue("buyCars").split(":");
+        const buyCarID = myCookie.get("buyCars").split(":");
         var productNO = 0;
         var sum = 0;
         //建立商品列表
@@ -173,7 +173,7 @@
         //讀取商品資料
         function getData(NO){
             var buyCarsProduct = "buyCar" + buyCarID[NO];
-            var buyP = getCookieValue(buyCarsProduct).split(":");
+            var buyP = myCookie.get(buyCarsProduct).split(":");
             sum += buyP[2] * buyP[3];
             document.getElementsByName("product")[productNO++].src += buyP[0];
             for(var i=1; i<4; i++){
@@ -186,18 +186,18 @@
                 //隱藏list顯示
                 document.getElementsByName("NO")[NO].className = "listClose";
                 //更新總價顯示
-                var buyP = getCookieValue("buyCar" + buyCarID[NO]).split(":");
+                var buyP = myCookie.get("buyCar" + buyCarID[NO]).split(":");
                 sum -= buyP[2] * buyP[3];
                 document.getElementById("totalPrice").innerHTML = sum;
                 //刪除商品資料
-                delCookie("buyCar" + buyCarID[NO], "/FarmProductHTML/BuyCar.html")
+                myCookie.remove("buyCar" + buyCarID[NO], "/FarmProductHTML/BuyCar.html")
                 //刪除購物車中商品ID
                 carDel(NO);
             }
         }
         //刪除購物車中商品ID
         function carDel(NO){
-            var tmp = getCookieValue("buyCars").split(":");
+            var tmp = myCookie.get("buyCars", ":");
             var newbuyCars = "";
             tmp.forEach(function (item, i) {
                 if(item == buyCarID[NO] || item == "") return false;
@@ -207,11 +207,11 @@
             //無購物車內容
             if(newbuyCars == ""){
                 //移除整個購物車
-                delCookie("buyCars");
+                myCookie.remove("buyCars");
                 return false;
             }
             //更新購物車內容
-            addCookie("buyCars", newbuyCars);
+            myCookie.add("buyCars", newbuyCars);
         }
     </script>
 </head>

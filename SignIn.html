@@ -82,7 +82,7 @@
     <script src="js/getLoginCookie.js"></script>
     <script>
         if(document.cookie.match(".*userState=false.*")){
-            delCookie("userState");
+            myCookie.remove("userState");
             /*
             //delete,屬性也要一樣才會覆蓋，不然會變新的變數
         	document.cookie = "singIn=null;" + "path=/Independent_Study;" + "max-age=1";
