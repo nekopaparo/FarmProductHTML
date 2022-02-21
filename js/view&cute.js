@@ -1,3 +1,32 @@
+var view_cute = `
+<!--圖片-->
+<!--預覽和切割圖片-->
+<div id="view_cuteMain">
+    <input id="imgInput" type="file" accept="image/*"/>
+    <div class="img-view-home">
+        <div class="img-cute-range" tabindex="0"></div>
+        <img id="imgView" src="#" alt="your image"/>
+    </div>
+    <div class="img-size-range-home">
+        <input id="imgSizeRange" type="range" step="0.01" min="0.01" max="1.00" value="0.20" aria-label="zoom"/>
+    </div>
+    <div style="display: flex; justify-content: right;">
+        <input id="imgCuteResult" type="button" value="輸出"/>
+    </div>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</div>
+`
+/*
+<form name="form" class="pictureUp" action="../photo" enctype="multipart/form-data" method="POST">
+	<div class="upDiv">
+		<input name="photo" id="imgUpDate" type="file" accept="image/jpeg" onchange="showImg()">
+	</div>
+<div class="imgDiv">
+	<img id="imgview" >
+</div>
+</form>
+ */
+
 var imgURL = null;
 var imgWidth = 0; //圖片寬度
 var imgMove = null; //圖片移動

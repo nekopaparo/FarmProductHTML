@@ -76,38 +76,14 @@
     </script>
 </head>
 <body>
-    <header>
-        <!--回到首頁-->
-        <div id="header-home">
-            <a href="Homepage.html"><img src="./images/home_removebg.png"></a>
-        </div>
-        <!--其他功能-->
-        <div id="header-menu">
-            <div class="header-menu-isShow"><a href="SignIn.html">登入</a></div>
-            <div class="header-menu-isShow"><a href="UserHome.html">會員管理</a></div>
-            <div class="header-menu-isShow"><a href="BuyCar.html">購物車</a></div>
-        </div>
-        <script>userState(); //使用者狀態</script>
-    </header>
-    <!--產品推薦-->
-    <hr>
-    <div id="commodity">
-        <img id="sliderImg" onclick="imgForward()">
-    </div>
-    <!--按鈕-->
-    <div id="sliderRadio">
-        <script>
-            for(var i=0; i<imgPath.length; i++){
-                document.write('<div><input name="sliderRadio" type="radio" onclick="radioSelect()" value="'+ i +'"></div>');
-            }
-        </script>
-    </div>
-    <hr>
+    <script>
+        document.write(header);
+        document.write(recommend);
+    </script>
     <!--搜尋-->
     <div id="search">
         <div><input  type="search" name="search"></div>&nbsp;
         <div><input  type="button" value="搜尋" onclick="document.location.href = 'Maintenance.html'"></div>
     </div>
 </body>
-<script>slideShow();</script>
 </html>

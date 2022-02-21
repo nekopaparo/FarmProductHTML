@@ -1,3 +1,19 @@
+var recommend = `
+<!--產品推薦-->
+<div id="commodity">
+    <img id="sliderImg" onclick="imgForward()">
+</div>
+<!--按鈕-->
+<div id="sliderRadio">
+    <script>
+        for(var i=0; i<imgPath.length; i++){
+            document.write('<div><input name="sliderRadio" type="radio" onclick="radioSelect()" value="'+ i +'"></div>');
+        }
+    </script>
+</div>
+<hr>
+<script>slideShow()</script>
+`
 //幻燈片效果用
 var images = 0;
 //圖片顯示時間 = slideSleep - imgSleep;
