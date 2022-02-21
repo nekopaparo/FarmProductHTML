@@ -289,28 +289,51 @@
 					</div>
 				</div>
 				<!--內容-->
-				<script>
+				<template id="listHome">
+                    <div class="list">
+                        <div class="main">
+                            <div class="list-font">P20210704110001</div>
+                            <div>
+                                <img>
+                            </div>
+                            <div class="list-font">蘋果</div>
+                        </div>
+                        <div class="other">
+                            <div class="list-font">100</div>
+                            <div class="list-font">50</div>
+                            <div></div>
+                            <div class="operate">
+                                <div>修改</div>
+                                <div>刪除</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <!--內容實體化-->
+                <script>
                     var data = [["P20210704110001", "蘋果", "100", "50"],
                                 ["P20210417100005", "紅蘿蔔", "80", "50"],
                                 ["P20210817120043", "葡萄", "81000", "80"]];
-                    var out = document;
-                    //建立商品列表
+
+                    // 透過檢查 HTML template 元素屬性的存在與否，以測試瀏覽器是否支援它
+                    if ('content' in document.createElement('template')) {
+                    var ls = document.querySelector('#listHome');
+                    var lsf = ls.content.querySelectorAll(".list-font");
+                    var dh = document.querySelector(".dataHome");
+
                     data.forEach(function (item){
-                        out.write("<div class=list>");
-                        out.write("<div class=main>");
-                        out.write("<div class=list-font>" + item[0] + "</div>");
-                        out.write("<div><img src=images/product/" + item[0] + "01.jpg></div>");
-                        out.write("<div class=list-font>" + item[1] + "</div>");
-                        out.write("</div>");
-                        out.write("<div class=other>");
-                        out.write("<div class=list-font>" + item[2] + "</div>");
-                        out.write("<div class=list-font>" + item[3] + "</div>");
-                        out.write("<div></div>");
-                        out.write("<div class=operate>");
-                        out.write("<div>修改</div>");
-                        out.write("<div>刪除</div>");
-                        out.write("</div></div></div><hr>");
+                        // 以模板來實例化表格
+                        for(var i=0; i<4; i++){
+                            lsf[i].textContent = item[i];
+                        }
+                        ls.content.querySelector("img").src = `images/product/${item[0]}01.jpg`;
+                        // 複製新的list並將其插至dataHome
+                        var clone = document.importNode(ls.content, true);
+                        dh.appendChild(clone);
                     })
+                    } else {
+                    // 因為 HTML template 不被支援，所以要用其他方法在表格增加新行
+                    }
                 </script>
 			</div>
 		</div>
