@@ -56,28 +56,20 @@
             width:50vw;
         }
     </style>
-    <script src="js/ProductDetail.js"></script>
     <script src="js/SliderImg.js"></script>
     <script src="js/Cookie.js"></script>
     <script src="js/MySQL.js"></script>
     <script src="js/header.js"></script>
-    <script>
-        //跳轉網頁
-        function imgForward(){
-            var lastChange;
-            if(images == 0){
-                lastChange = imgUrl.length - 1;
-            }
-            else{
-                lastChange = images - 1;
-            }
-            SELECT_all_FROM_Commodity_WHERE_Commodity_id_productID(productID[lastChange]); //MySQL
-        }
-    </script>
 </head>
 <body>
     <script>
         document.write(header);
+        // 讀取json
+        var request = new XMLHttpRequest();
+        request.open('GET', "data/Product.json", true);
+        request.responseType = 'json';
+        request.send();
+        // 產品推薦
         document.write(recommend);
     </script>
     <!--搜尋-->
