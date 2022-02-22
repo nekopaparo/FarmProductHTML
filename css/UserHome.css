@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import url(header.css);
+
+body {
+    min-width: 23cm;
+}
+.main {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+}
+.user-operate {
+    width: 3cm;
+}
+.user-operate-select{
+    cursor: pointer;
+}
+.user-operate-select:hover{
+    border: 2px blue solid;
+}
+.selected {
+    background-color: blanchedalmond;
+}
+#selectpageshow{
+    width: 100%;
+    height: 100%;
+    border: 1px red solid;
+}

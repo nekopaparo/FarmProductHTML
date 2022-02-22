@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+body {
+    max-width: 35cm;
+    box-sizing: border-box; /* 使元素的寬度包括padding margin, border*/
+    margin: 0;
+    padding: 1%;
+}
+.HOME {
+    height: 95%;
+    width: 100%;
+}
+/*商品|新增*/
+.pageHome {
+    height: 6%;
+    display: flex;
+}
+
+.pageHome div {
+    display: flex;
+    align-items: center;
+    margin: 0.5%;
+    font-size: 1vw;
+    cursor: pointer; /*滑鼠特效*/
+}
+.pageHome div:hover {
+    border: 2px blue solid;
+}
+.selectPage {
+    background-color: sandybrown;
+}
+.selectShow {
+    display: none;
+}
+/*商品*/
+#productHome {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1px;
+    border: 1px brown solid;
+}
+.dataHome {
+    height: 95%;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.title {
+    display: flex;
+    width: 100%;
+    height: 5%;
+    border-bottom: 3px black solid;
+}
+.title div div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main {
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+.main div {
+    width: 33%;
+    height: 100%;
+}
+
+.other {
+    display: flex;
+    width: 40%;
+    height: 100%;
+}
+.other div {
+    width: 25%;
+    height: 100%;
+}
+
+.list {
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.list-font {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list img {
+    width: 100%;
+    height: 100%;
+}
+.operate div {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+/*新增*/
+#createHome {
+    height: 100%;
+    width: 100%;
+    border: 2px black solid;
+    padding: 1%;
+    box-sizing: border-box;
+}
+/*新增資料*/
+.createDataHome {
+    height: 40%;
+    display: flex;
+}
+.userInput {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5%;
+}
+
+.userInput input {
+    height: 25%;
+    width: 94.6%;
+    margin: 1.8%;
+    font-size: 5vh;
+}
+/*圖片上傳*/
+/*.pictureUp {
+    width: 50%;
+    height: 100%;
+}
+.upDiv {
+    height: 10%;
+}
+.upDiv input {
+    width: 100%;
+    height: 100%;
+    font-size: 2vh;
+}
+
+.imgDiv {
+    height: 90%;
+    width: 100%;
+}
+
+.imgDiv img {
+    height: 100%;
+    width: 100%;
+}*/
+/*商品介紹*/
+.describeHome {
+    height: 40%;
+    padding: 1%;
+    font-size: 3vh;
+    font-weight: 900;
+}
+
+.describeHome hr {
+    margin: 2% -2%;
+    border-color: black;
+}
+
+.describeHome div {
+    height: 10%;
+    margin: 1% 0;
+}
+
+.describeHome textarea {
+    height: 80%;
+    width: 99%;
+}
+/*送出*/
+.submitHome {
+    height: 10%;
+    width: 100%;
+}
+
+.submitHome input {
+    margin: 3.5%;
+    height: 50%;
+    width: 25%;
+    float: right;
+}

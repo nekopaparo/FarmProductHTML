@@ -100,3 +100,62 @@ window.onload = function() {
         }
     });
 };
+
+//圖片預覽
+function showImg() {
+    const [file] = imgUpDate.files;
+    imgview.src = URL.createObjectURL(file);
+}
+
+// <資料送出(待測試)>
+//送出
+var no = 0;
+function submitAll() {
+    if(no==0){
+        document.getElementById("imgName").value = imgUpDate.files[0].name;
+        Ajax();
+    }else if(no==1){
+        Ajax();
+    }else if(no==2){
+        form.submit();
+    }else{
+        return false;
+    }
+}
+//顯示
+function resetAll() {
+    form1.reset();
+    form2.reset();
+    form3.reset();
+}
+var path = ["../add", "../save"];
+var value = ["productName%^&$productPricing%^&$productQuantity%^&$imgName", "txt%^&$imgName"];
+
+var xmlHTTP;
+if(window.ActiveXObject)
+{
+    xmlHTTP=new ActiveXObject("Microsoft.XMLHTTP");
+}
+else if(window.XMLHttpRequest)
+{
+    xmlHTTP=new XMLHttpRequest();
+}
+function Ajax(){  
+    var newValue = "?";
+    var innerValue = value[no].split("%^&$");
+    innerValue.forEach(function(item , i){
+        if(i!=0) newValue += "&";
+        newValue += item + "=" + document.getElementById(item).value;
+    });
+    var url = path[no] + newValue;
+    xmlHTTP.open("GET",url,true);
+    xmlHTTP.send();
+    //延遲送出，確保執行完成
+    xmlHTTP.onreadystatechange = function () {
+        if (xmlHTTP.readyState == 4) {
+            no++;
+            submitAll();
+        }
+    }
+}
+// </資料送出(待測試)>
