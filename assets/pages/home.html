@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>首頁</title>
+<style>
+    #commodity
+    {
+        width: 100%;
+        height: 90%;
+    }
+    #slider-radio
+    {   
+        width: 100%;
+        height: 8%;
+        margin-top: 1%;
+        padding-top: 1%;
+        border-top: 1px gray solid;
+    }
+    #commodity img
+    {
+        width: 100%;
+        height: 100%;
+        min-height: 10cm;
+        cursor: pointer; /*滑鼠特效*/
+    }
+    #slider-radio input
+    {
+        width: 5vh;
+        min-width: 30px;
+        height: 100%;
+        min-height: 30px;
+        cursor: pointer; /*滑鼠特效*/
+        accent-color: green; /*isCheck顏色*/
+    }
+    #slider-radio input:hover
+    {
+        width: 6vh;
+        min-width: 40px;
+        height: 6vh;
+        min-height: 40px;
+    }
+</style>
+<script src="assets/js/slider.js"></script>
+{% endblock %}
+<body>
+{% block content %}
+<!--產品推薦-->
+<div id="commodity" >
+    <img id="sliderImg" onclick="imgForward()"/>
+</div>
+<!--按鈕-->
+<div id="slider-radio" class="center">
+<template id="slider-radio-view">
+    <div class="center">
+        <input name="sliderRadio" type="radio" 
+               onclick="radioSelect()"/>
+    </div>
+</template>
+</div>
+<script>
+    // 載入按鈕
+    templater('#slider-radio-view', "#slider-radio", function (tmp, append)
+    {
+        // 實作內容
+        var target = tmp.content.querySelector('input');
+        for(i=0; i<sliderData.length; ++i)
+        {
+            target.value = i;
+            append( document.importNode(tmp.content, true) ); // 插入內容
+        };
+        // 載入圖片
+        imgChange();
+        // 幻燈片
+        t2 = setTimeout(slider, slideSleep);
+    });
+</script>
+{% endblock %}
+</body>

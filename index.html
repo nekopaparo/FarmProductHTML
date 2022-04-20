@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIRAFFE BLUES</title>
+    <script src="assets/js/jquery-3.6.0.js"></script>
+    <script src="assets/js/Layouter.js"></script>
+    <script src="assets/js/myCookie.js"></script>
+    <script>
+        // DATA
+        var cookieData = null;
+        // 讀取json
+        const readJson = Layouter.getContent("../data", function ()
+        {
+            cookieData = readJson.response['cookie'];
+
+            var path = window.document.location.href,
+                linkPath = path.split("?")[1];
+                
+            linkPath == undefined? Layouter.run("home") : 
+                linkPath.match(/p=(.*)/)? Layouter.run("view") : 
+                    Layouter.run(linkPath);
+        }, 'json');
+    </script>
+</head>
+<body>歡迎使用 / Welcome</body>
+</html>

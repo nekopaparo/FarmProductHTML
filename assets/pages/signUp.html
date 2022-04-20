@@ -1,0 +1,71 @@
+{% extends "pg.html" %}
+{% block head %}
+<title>會員申請</title>
+<link rel="stylesheet" href="assets/css/signUp.css"/>
+<link rel="stylesheet" href="assets/css/inputCover.css"/>
+<script src="assets/js/inputCover.js"></script>
+<script src="assets/js/signup.js"></script>
+<style>
+    .cover-close
+    {
+        width: 100%;
+    }
+    #goback
+    {
+        display: flex;
+        align-items: center;
+        position:absolute;
+        right: 0;
+        top: -3%;
+        cursor: pointer;
+    }
+    #goback:hover
+    {
+        background-color: bisque;
+    }
+</style>
+{% endblock %}
+<body>
+{% block content %}
+<fieldset class="singUpHome">
+    <legend>填寫資料</legend>
+    <a href="javascript:history.back()" id="goback" title="回上一頁">
+        <svg width="30" height="30">
+            <path transform="rotate(179.911 14.9982 15.0021)" stroke-width="0.1" stroke="#000" id="svg_1" d="m14.00814,20.86891l3.45326,-3.62364l-6.67672,0l-6.6767,0l0,-2.2432l0,-2.24321l6.60011,0c3.63006,0 6.6001,-0.1137 6.6001,-0.25266c0,-0.13896 -1.44511,-1.7696 -3.21136,-3.62364l-3.21137,-3.37098l2.96829,0l2.96828,0l4.53323,4.74979l4.53323,4.74978l-4.54192,4.74069l-4.54192,4.74069l-3.12488,0l-3.12489,0l3.45327,-3.62364l0,0z" fill="#729C62"/>
+            <path stroke="#000" stroke-width="0" id="svg_7" d="m20.23938,12.34456c0.32548,-0.77353 0.77097,-1.42863 1.19354,-1.75512c0.45272,-0.34978 0.25186,-0.50151 -0.21515,-0.16253c-0.19648,0.14261 -0.25262,0.03906 -0.25262,-0.46599c0,-1.20501 0.86059,-1.95063 2.93121,-2.53963c1.75205,-0.49838 3.04377,-1.05885 3.57934,-1.55305l0.43642,-0.40272l0,0.70069c0,0.86641 -0.37033,2.17535 -0.78026,2.75781c-0.43486,0.61789 -1.92538,1.75843 -2.6568,2.03297c-0.65529,0.24596 -2.05478,0.31837 -2.80275,0.14502c-0.37274,-0.08639 -0.49104,-0.02038 -0.68417,0.38175c-0.12843,0.26741 -0.23351,0.64784 -0.23351,0.8454c0,0.22429 -0.12393,0.3592 -0.32996,0.3592c-0.2447,0 -0.29258,-0.08884 -0.1853,-0.3438l0,0z" fill="#729C62"/>
+        </svg>
+    </a>
+    <form name="userData" action="#" method="post" >
+        <template id="input-data-view">
+            <div class="input-data-view-body">
+                <div id="cover_" class="cover-close"></div>
+                <div class="input-data-view-input">
+                    <input type="text">
+                </div>
+            </div>
+            <div id="_Error" class="br"></div>
+        </template>
+    </form>
+    <br>
+    <div class="submitHome">
+        <input id="submitButton" type="button" value="確認送出">
+        <input id="resetButton" type="button" value="重新填寫">
+    </div>
+</fieldset>
+<script>
+    const UP = readJson.response["up"];
+    inputCoverter(UP, 'form[name=userData]', function (tmp, item) 
+    {
+        tmp.content.querySelector('.br').id = `${item.control}IdError`;
+    });
+    document.getElementById("birthdayId").type = "date";
+    document.getElementById("confirmId").type = "password";
+    $("#identId").change(identCheck);
+    $("#emailId").change(emailCheck);
+    $("#passwdId").change(passwdCheck);
+    $("#confirmId").change(passwdCheck);
+    $("#submitButton").click(lastCheck);
+    $("#resetButton").click(resetData);
+</script>
+{% endblock %}
+</body>

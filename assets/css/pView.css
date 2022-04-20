@@ -1,0 +1,154 @@
+@charset "UTF-8";
+#detailHome
+{
+    width: 98%;
+    height: 100%;
+    border: 3px black solid;
+    margin: 0 1%;
+}
+.detail
+{
+    width: 50%;
+    height: 100%;
+}
+.imgHome 
+{
+    border-right: 2px black solid;
+}
+/*圖片*/
+.imgHome img
+{
+    width: 90%;
+    height: 90%;
+}
+/*div取代h1*/
+.h1
+{
+    height: 10%;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 900;
+    color: green; 
+}
+#abstract
+{
+    height: 18%;
+    padding-top: 2%;
+    border-top: 2px silver solid;
+    border-bottom: 1px silver solid;
+    margin: 0 -0.5px;
+}
+.introduce
+{
+    height: 57%;
+}
+#toBuy
+{
+    height: 15%;
+    display: flex;
+}
+#toBuy *
+{
+    user-select:none; /*取消選擇*/
+}
+/*耕作人*/
+#abstract div 
+{
+    height: 34%;
+    margin-left: 2px;
+    font-size: 15px;
+}
+.star
+{
+    height: 15px;
+    width: 15px;
+}
+/*介紹*/
+.title
+{
+    height: 20%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+.content 
+{
+    height: 80%;
+    overflow: scroll; /*字超過變滑動*/
+    overflow-x: hidden; /*取消左右*/
+    font-size: 16px;
+    border-top: 3px silver solid;
+    border-bottom: 1px black solid;
+}
+/*庫存*/
+#stock 
+{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+#stock span
+{
+    width: 30%;
+    font-size: 22px;
+    border-right: 1px black solid;
+}
+#stock .product
+{
+    width: 70%;
+    height: 100%;
+    font-size: 50px;
+    display: flex;
+    justify-content: right;
+    align-items:flex-end;
+}
+/*-+*/
+#set-quantity
+{
+    height: 100%;
+    border: 1px black solid;
+}
+#set-quantity img
+{
+    height: 50%;
+    display: block;
+    cursor: pointer; /*滑鼠特效*/
+    -webkit-user-drag: none; /*取消拖移*/
+}
+#set-quantity img:hover ,#set-quantity:hover
+{
+    border: 2px skyblue solid;
+}
+/*購買數量*/
+#buy 
+{
+    width: 80%;
+    display: flex;
+}
+#buy div
+{
+    width: 50%;
+    font-size: 15px;
+}
+#buy input
+{
+    width: 100%;
+    font-size: 60px;
+}
+/*加入購物車*/
+#goBuy
+{
+    width: 50%;
+    height: 100%;
+    background-color: red;
+    color: seashell;
+    font-size: 15px;
+    cursor: pointer; /*滑鼠特效*/
+}
+#goBuy:hover
+{
+    color: deepskyblue;
+    border: 3px green solid;
+}

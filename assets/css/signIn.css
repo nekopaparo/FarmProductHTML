@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+@import url(inputCover.css);
+
+body{
+    display: flex;
+    align-items: center; /*垂直置中*/
+    justify-content: center; /*水平置中*/
+    height: 100vh;
+    margin: 0;
+    background: url(../../images/signInbg.jpg); /*背景圖片*/
+    background-size: 100% 100%;
+}
+/**/
+.main{
+    padding: 0.5%;
+    display:inline-block;
+    height: 60%;
+    min-height: 10cm;
+    width: 25%;
+    min-width: 8cm;
+    border:0.5vh black solid;
+    background-color: white;
+}
+.picture{
+    height: 30%; /*1.*/
+    width: 100%;
+    box-sizing:border-box; /* 使元素的寬度包括padding margin, border*/
+    border:1px black solid;
+}
+.picture img{
+    height: 100%;
+    width: 100%;
+}
+.title{
+    display: flex;
+    align-items: center; /*垂直置中*/
+    justify-content: center; /*水平置中*/
+    font-size: 1cm;
+    height: 15%; /*2.*/
+    width: 100%;
+    box-sizing:border-box; /* 使元素的寬度包括padding margin, border*/
+    white-space:nowrap; /*不換行*/
+    overflow: hidden; /* 超過範圍隱藏 */
+}
+.blank{
+    height: 15px;
+}
+#form-data{
+    height: 40%;
+}
+.submit{
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 10%; /* 5. */
+    margin-top: 5px;
+}
+.other{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow: hidden; /* 超過範圍隱藏 */
+    font-size: 2vh;
+}
+.submit input{
+    position: absolute;
+    height: 80%;
+    width: 20%;
+    font-size: 2vh;
+    right: 0;
+}

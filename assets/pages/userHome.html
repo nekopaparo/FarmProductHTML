@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>會員管理</title>
+<link rel="stylesheet" href="assets/css/userHome.css"/>
+<link rel="stylesheet" href="assets/css/userPs.css"/>
+<script src="assets/js/userHome.js"></script>
+{% endblock %}
+<body>
+{% block content %}
+<div id="userHome">
+    <div class="user-operate">
+        <div id="select_0" class="user-operate-select center">會員管理</div>
+        <div id="select_1" class="user-operate-select center">商品管理</div>
+        <div id="select_2" class="user-operate-select center">訂單管理</div>
+    </div>
+    <div id="selectpageshow"></div>
+</div>
+<script>
+    $('.user-operate-select').click(function ()
+    {
+        const view = $(this).prop('id');
+
+        if ( nowView != view )
+        {
+            nowView == view;
+            selectView[view]();
+
+            nowSelect?.removeClass('selected');
+            $(this).addClass('selected');
+            nowSelect =  $(this);
+        }
+    });
+    
+</script>
+{% endblock %}
+</body>

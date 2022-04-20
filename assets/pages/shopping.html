@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>購物車</title>
+<link rel="stylesheet" href="assets/css/shopping.css">
+<script>
+    var buyCarsData = myCookie.get(cookieData.shopping, ":")
+    if ( !buyCarsData ) alert("購物車內無商品!");
+</script>
+{% endblock %}
+<body>
+{% block content %}
+<div class="listBody">
+    <!--標題-->
+    <div class="listTitle center">購買內容</div>
+    <!--名稱-->
+    <div class="listName">
+        <div class="imgDel">
+            <div>刪除</div>
+        </div>
+        <div class="imgDelRight">
+            <div class="listImg">預覽圖</div>
+            <div class="listPName">商品名</div>
+            <div class="listOther">
+                <div>價錢</div>
+                <div>購買數量</div>
+            </div>
+        </div>
+    </div>
+    <!--商品內容-->        
+    <div id="listContent">
+        <template id="listContent-view">
+            <div class="list">
+                <div class="imgDel">
+                    <img src="images/buy/del-removebg.png">
+                </div>
+                <div class="imgDelRight">
+                    <div class="listImg"><img class="product"></div>
+                    <div class="listPName product">商品名</a></div>
+                    <div class="listOther">
+                        <div class="product">價錢</div>
+                        <div class="product">數量</div>   
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <!--結帳-->
+    <div id="summary">
+        <div id="total" class="center">總價</div>
+        <div id="totalPrice" class="center"></div>
+        <div id="confirmBuy" class="center">結帳</div>
+    </div>
+</div>
+<script>
+var totalPrice = 0;
+//建立商品
+templater('#listContent-view', '#listContent', function (tmp, append)
+{
+    var NO = 0;
+    if ( !buyCarsData ) return;
+    var target = tmp.content.querySelectorAll('.product');
+    var target_img = tmp.content.querySelector('.imgDel img');
+    var target_list = tmp.content.querySelector('.list');
+    // 實作內容
+    buyCarsData.forEach(function (buyCarData) {
+        var datas = buyCarData.split(",");
+        var DETAIL = readJson.response["product"][datas[0]];
+        target[0].src = `images/product/${datas[0]}01.jpg`;
+        target_list.id = `NO.${NO}`;
+        target_img.alt = NO++;
+        target_img.title = buyCarData;
+        target[1].textContent = DETAIL.name;
+        target[2].textContent = DETAIL.price;
+        target[3].textContent = datas[1];
+        append( document.importNode(tmp.content, true) ); // 附加內容
+        totalPrice += DETAIL.price * parseInt(datas[1]);
+    });
+});
+// 更新總價
+document.getElementById('totalPrice').textContent = totalPrice;
+// 刪除商品
+$('.imgDel img').click(function () 
+{
+    if( !confirm("確定刪除?") ) return;
+    var pp = $(this).prop('title');
+    //隱藏list顯示
+    document.getElementById(`NO.${$(this).prop('alt')}`).className = "listClose";
+    //刪除商品資料
+    var buyCarsData = myCookie.get( cookieData.shopping, ":" )
+    var newBuyCarsData = null;
+    buyCarsData.forEach(function ( buyCarData )
+    {
+        if ( buyCarData == pp )
+        {
+            //更新總價顯示
+            var datas = buyCarData.split(',');
+            totalPrice -= readJson.response["product"][datas[0]].price * parseInt(datas[1]);
+            document.getElementById('totalPrice').textContent = totalPrice;
+            return;
+        }
+    
+        if ( newBuyCarsData )
+            newBuyCarsData += `:${buyCarData}`;
+        else
+            newBuyCarsData = buyCarData;
+    });
+    if ( newBuyCarsData )
+        myCookie.add(cookieData.shopping, newBuyCarsData);
+    else
+        myCookie.remove(cookieData.shopping);
+});
+</script>
+{% endblock %}
+</body>

@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>商品</title>
+<link rel="stylesheet" href="assets/css/pView.css"/>
+<script src="assets/js/pView.js"></script>
+<style>
+    body { min-width: 15cm; }
+</style>
+{% endblock %}
+<body>
+{% block content %}
+<div id="detailHome" class="center">
+    <div class="imgHome detail center"><img class="product"></div>
+    <div class="detail">
+        <div class="h1 product"></div>
+        
+        <div id="abstract">
+            <div id="score" class="product">
+                耕作人:
+            <template id="star-view"><img class="star"></template>
+            </div>
+            <div class="product">上架時間:</div>
+            <div class="product">定價:</div>
+        </div>
+        <div class="introduce">
+            <div class="title">介紹:</div>
+            <div class="content product"></div>
+        </div>
+        
+        <div id="toBuy">
+            <div id="stock">
+                <span class="center">庫存</span>
+                <div class="product"></div>
+            </div>
+            <div id="set-quantity">
+                <img src="images/buy/subtract.png" alt="-">
+                <img src="images/buy/plus.png" alt="+">
+            </div>
+            <div id="buy">
+                <div class="center">購買數量</div>
+                <input id="buyIn" type="text" maxlength="3" value="1">
+            </div>
+            <div id="goBuy" class="center" on>加入購物車</div>
+        </div>
+    </div>
+</div>
+<script>
+    //填上資料
+    const sellerData = readJson.response['seller'][productData.seller];
+    
+    const detail = [productData.name, productData.seller,
+                    productData.time, productData.price,
+                    productData.message, productData.quantity];
+    
+    document.getElementsByClassName("product")[0].src = `images/product/${P}01.jpg`
+    for(var i=1; i<7; i++)
+        document.getElementsByClassName("product")[i].innerHTML += detail[i-1];
+    // 實作內容
+    templater('#star-view', '#score', function (tmp, append)
+    {
+        var target = tmp.content.querySelector('img');
+        // 亮星星
+        target.src = "images/buy/starBright-removebg.png";  
+        for(i=0; i<sellerData.points; i++)
+        {
+            append( document.importNode(tmp.content, true) );
+        }
+        // 暗星星
+        target.src = "images/buy/star-removebg.png";
+        clone = document.importNode(tmp.content, true);
+        for(i=0; i<5-sellerData.points; i++)
+        {
+            append( document.importNode(tmp.content, true) );
+        }
+    });
+    var mouseholddown = false,
+        t = null;
+    
+    // +-數量
+    $('#set-quantity img').mousedown(function()
+    {
+        const buyIN = $(this).prop("alt");
+        buyQ(buyIN);
+        t = setTimeout(function () {
+            mouseholddown = true;
+            buyQ(buyIN);
+        }, 400);
+    });
+    $('#set-quantity img').mouseup(function()
+    {
+        if ( t )
+        {
+            clearTimeout(t);
+            t = null;
+        }
+        if ( mouseholddown )
+            mouseholddown = false;
+    });
+    // 加入購物車
+    $('#goBuy').click(buyCar);
+</script>
+{% endblock %}
+</body>

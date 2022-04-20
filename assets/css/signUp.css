@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 20cm;
+    margin: 0;
+    background: url(../../images/signUpbg.jpg); /*背景圖片*/
+    background-size: 100% 100%;
+}
+.singUpHome {
+    height: 80%;
+    min-height: 15cm;
+    width: 30%;
+    min-width: 8cm;
+    border: 3px black solid;
+    padding: 2%;
+    background-color: white;
+    position: relative;
+}
+.singUpHome legend {
+    font-size: 30px;
+    font-weight: 900;
+}
+form {
+    height: 90%;
+    width: 100%;
+    background-color: white;
+    overflow-y: scroll; /*字超過變滑動*/
+    overflow-x: hidden; /*取消左右*/
+    padding-top: 2%;
+}
+.br {
+    height: 6%;
+    color: red;
+}
+.submitHome {
+    height: 5%;
+    width: 100%;
+}
+.submitHome input {
+    height: 100%;
+    float: right;
+    margin-left: 3%;
+}

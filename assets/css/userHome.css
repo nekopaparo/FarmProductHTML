@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#userHome
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.user-operate
+{
+    width: 10%;
+}
+#selectpageshow
+{
+    width: 90%;
+    height: 100%;
+    border: 3px brown solid;
+}
+
+.user-operate-select
+{
+    cursor: pointer;
+}
+.user-operate-select:hover
+{
+    border: 3px rebeccapurple solid;
+    background-color: khaki;
+}
+.selected
+{
+    border: 3px aquamarine solid;
+    background-color: greenyellow;
+}

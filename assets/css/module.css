@@ -1,0 +1,31 @@
+/*超連結*/
+.anchor
+{
+    text-decoration: none; /*取消超連結底線*/
+    color: green;
+}
+.anchor:hover
+{
+    text-decoration: underline; /*超連結底線*/
+}
+/* 置中 */
+.center
+{
+    display: flex;
+    align-items: center; /*flex垂直置中*/
+    justify-content: center; /*flex水平置中*/
+}
+/* 靠左靠右 */
+.float-left
+{
+    float: left;
+}
+.float-right
+{
+    float: right;
+}
+
+.font-red
+{
+    color: red;
+}

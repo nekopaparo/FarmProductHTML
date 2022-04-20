@@ -1,0 +1,67 @@
+<body>
+{% view %}
+<div id="produc-pageHome">
+	<!--商品|新增-->
+	<div id="produc-pageHome-menu">
+		<div id="view" class="center selectPage">商品</div>
+		<div id="create" class="center">新增</div>
+	</div>
+	<!--商品-->
+	<div id="produc-pageHome-view">
+		<div id="dataHome">
+			<!--標題-->
+			<div class="title">
+				<div class="dataHome-list-P center">商品編號</div>
+				<div class="dataHome-list-img center">預覽圖</div>
+				<div class="dataHome-list-other center">商品名</div>
+				<div class="dataHome-list-other center">定價</div>
+				<div class="dataHome-list-other center">庫存</div>
+				<div class="dataHome-list-other center">已賣出</div>
+				<div class="dataHome-list-other center">操作</div>
+			</div>
+			<!--內容-->
+			<template id="dataHome-list-view">
+            <div class="list">
+                <div class="dataHome-list-P list-datas center">P20210704110001</div>
+                <div class="dataHome-list-img center"><img></div>
+				<div class="dataHome-list-other list-datas center">蘋果</div>
+                <div class="dataHome-list-other list-datas center">100</div>
+                <div class="dataHome-list-other list-datas center">50</div>
+                <div class="dataHome-list-other center center">null</div>
+                <div class="dataHome-list-other operate">
+                    <div class="center">修改</div>
+                    <div class="center">刪除</div>
+                </div>
+            </div>
+            </template>
+		</div>
+	</div>
+	<!--新增-->
+	<div id="produc-pageHome-create" class="unselect">
+		<!--新增資料-->
+		<div class="createDataHome">
+			<!--商品-->
+			<div class="userInput">
+				<input id="productName" type="text" placeholder="商品名" autocomplete = "off">
+				<input id="productPricing" type="text" placeholder="定價" autocomplete = "off">
+				<input id="productQuantity" type="text" placeholder="數量" autocomplete = "off">
+				<input id="imgInput" type="file" accept="image/*"/>
+			</div>
+			<div class="userInput">
+				<img id="imgView" src="#" alt="your image"/>
+			</div>
+		</div>
+		<!--新增介紹-->
+		<div class="describeHome">
+			<div>商品介紹</div>
+			<textarea></textarea>
+		</div>
+		<!--送出/重填-->
+		<div class="submitHome">
+			<input type="button" value="送出" >
+			<input type="button" value="重填" >
+		</div>
+	</div>
+</div>
+{% view %}
+</body>

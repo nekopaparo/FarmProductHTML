@@ -1,0 +1,95 @@
+{% extends "pg.html" %}
+{% block head %}
+<title>登入</title>
+<link rel="stylesheet" href="assets/css/signIn.css"/>
+<script src="assets/js/inputCover.js"></script>
+<script>
+    if ( myCookie.ishas(cookieData.user) )
+    {
+    	alert('已登入');
+        document.location.href = '.';
+	}
+</script>
+<style>
+    .input-data-view-body
+    {
+        height: 40%;
+    }
+    a
+    {
+        text-decoration: none; /*取消超連結底線*/
+        color: green;
+    }
+    a:hover
+    {
+        text-decoration: underline; /*超連結底線*/
+    }
+</style>
+{% endblock %}
+<body>
+{% block content %}
+<form action="UserRead" class="main" method="POST">
+    <div class="picture">
+        <a href="." title="回到首頁"><img src="images/signInTitle.png"></a>
+    </div>
+    <div class="blank"></div>
+    <div class="title">會員登入</div>
+    <div id="form-data"></div>
+    <template id="input-data-view">
+        <div class="blank"></div>
+        <div class="input-data-view-body">
+            <div id="" class="cover-close"></div>
+            <div class="input-data-view-input">
+                <input type="text">
+            </div>
+        </div>
+    </template>
+    <div class="submit">
+        <div class="other">
+            <div>
+                <a href="?pg=userup">申請會員</a><br>
+                <a href=".">忘記帳號密碼</a>
+            </div>
+        </div>
+        <input type="button" value="登入">
+        <script>
+            
+        </script>
+    </div>
+</form>
+<script>
+    const IN = readJson.response["in"];
+    inputCoverter(IN, '#form-data');
+    
+    // 登入
+    $("input[value=登入]").click(function()
+    {   
+        var username = $("input[name=username]");
+        var passwd = $("input[name=passwd]");
+        if ( !username.val() )
+        {
+            alert("請輸入帳號");
+            username.focus();
+            return;
+        }
+        if ( !passwd.val() )
+        {
+            alert("請輸入密碼");
+            passwd.focus();
+            return;
+        }
+        const user = readJson.response['member'][username.val()];
+        if ( user && user === passwd.val())
+        {
+            myCookie.add(cookieData.user, readJson.response["name"][username.val()]);
+            document.location.href = '.';
+        }
+        else
+            alert("帳號或密碼錯誤");
+    });
+    // 預設
+    $("input[type=text]")[0].placeholder = "root";
+    $("input[type=text]")[1].placeholder = "1234";
+</script>
+{% endblock %}
+</body>

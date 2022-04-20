@@ -1,0 +1,163 @@
+{
+    "recommend" : [
+        "P20210704110001",
+        "P20210417100005",
+        "P20210817120043",
+        "P20220419202100",
+        "P20220419202905"
+    ],
+    "member" : {
+        "root" : "1234",
+        "peko" : "hahaha",
+        "neko" : "papa"
+    }, 
+    "name" : {
+        "root" : "哈洽馬",
+        "peko" : "配口茶",
+        "neko" : "可可醬"
+    },
+    "user" : {
+        "哈洽馬" : {
+            "product" : [
+                "P20210704110001",
+                "P20220419202100",
+                "P20220419202905"
+            ]
+        },
+        "配口茶" : {
+            "product" : [
+                "P20210417100005"
+            ]
+        },
+        "可可醬" : {
+            "product" : [
+                "P20210817120043"
+            ]
+        }
+    },
+    "product" : {
+        "P20210704110001" : {
+            "seller" : "哈洽馬",
+            "time" : "2021/07/04",
+            "name" : "蘋果", 
+            "price" : "100", 
+            "quantity" : "50",
+            "message" : "甜度：●●●●●○<br>酸度：●●○○○○<br>脆度：●●●●○○<br>保存：冷藏約1~2周<br>日本品種<br>品種名稱有「蘋果界國王」的含意。<br>黃綠色的外皮，成熟時會出現被稱作「果點」的褐色斑點。<br>果肉綿密較硬、香甜多汁，幾乎不帶酸味。<br>採收期：10月底至11月初<br>持續一整年的人工栽種作業過程繁複，但卻是產出美味青森蘋果最重要的一環。<br>據說平均10畝（1,000㎡）的蘋果果園就需耗費約223小時的作業時間，是種非常需要經驗的生產技術。蘋果屬於薔薇科，落葉喬木，葉橢圓形，有鋸齒；果實球形，味甜，是普通的水果，也是最常見的水果，富含豐富的營養，是世界四大水果（蘋果、葡萄、柑桔和香蕉）之冠。 蘋果通常為紅色，不過也有黃色和綠色。 蘋果是雙子葉植物，花淡紅或淡紫紅色，大多自花不育，需異花授粉，果實由子房和花托發育而成。"
+        },
+        "P20210417100005" : {
+            "seller" : "配口茶",
+            "time" : "2021/06/17",
+            "name" : "紅蘿蔔",
+            "price" : "80",
+            "quantity" : "50",
+            "message" : "巨大蘿蔔,總長3公分"
+        },
+        "P20210817120043" : {
+            "seller" : "可可醬",
+            "time" : "2021/07/01",
+            "name" : "葡萄",
+            "price" : "81000",
+            "quantity" : "80",
+            "message" : "公道價"
+        },
+        "P20220419202100" : {
+            "seller" : "哈洽馬",
+            "time" : "2022/04/20",
+            "name" : "橘子",
+            "price" : "38",
+            "quantity" : "200",
+            "message" : "三個橘子"
+        },
+        "P20220419202905" : {
+            "seller" : "哈洽馬",
+            "time" : "2022/04/20",
+            "name" : "哈密哈",
+            "price" : "60",
+            "quantity" : "30",
+            "message" : "切開的哈密瓜"
+        }
+    },
+    "seller" : {
+        "哈洽馬" : {
+            "points" : 3
+        },
+        "配口茶" : {
+            "points" : 1
+        },
+        "可可醬" : {
+            "points" : 5
+        }
+    },
+    "menus" : [
+        {
+            "menu" : "登入",
+            "url" : "?pg=userin"
+        },
+        {
+            "menu" : "購物車",
+            "url" : "?cart"
+        },
+        {
+            "menu" : "會員管理",
+            "url" : "?user"
+        },
+        {
+            "menu" : "登出",
+            "url" : "."
+        }
+    ],
+    "url" : {
+        "home" : "home",
+        "view" : "pView",
+        "cart" : "shopping",
+        "userin" : "signIn",
+        "userup" : "signUp",
+        "user" : "userHome",
+        "p" : "view_userPs",
+        "error" : "view_maintenance"
+    },
+    "cookie" : {
+        "user" : "user",
+        "shopping" : "buycars"
+    },
+    "in" : [
+        {
+            "control" : "username",
+            "message" : "請輸入帳號"
+        },
+        {
+            "control" : "passwd",
+            "message" : "請輸入密碼"
+        }
+    ],
+    "up" : [
+        {
+            "control" : "username",
+            "message" : "姓名"
+        },
+        {
+            "control" : "account",
+            "message" : "帳號"
+        },
+        {
+            "control" : "passwd",
+            "message" : "密碼"
+        },
+        {
+            "control" : "confirm",
+            "message" : "密碼確認"
+        },
+        {
+            "control" : "ident",
+            "message" : "身分證字號"
+        },
+        {
+            "control" : "birthday",
+            "message" : "出生日期"
+        },
+        {
+            "control" : "email",
+            "message" : "信箱"
+        }
+    ]
+}
