@@ -2,6 +2,7 @@ var myCookie = {
     //cookieName已存在且屬性相同時，舊的會被刪除並從最後面加入
     "add" : function (name, value, path, age) // 指定存取權限
     { 
+        value = this.encode(value);
         var addValue = name + '=' + value + ';';
         switch(arguments.length)
         {
@@ -25,7 +26,7 @@ var myCookie = {
             const values = document.cookie.split(name + "=");
             if(values[0]==="")
             {
-                const value = values[1].split(';')[0];
+                const value = this.decode(values[1].split(';')[0]);
                 return key?  value.split(key):value;
             }
             var i = 0;
@@ -33,7 +34,7 @@ var myCookie = {
             {
                 if(values[i].match(/\s$/))
                 {
-                    const value = values[i+1].split(';')[0];
+                    const value = this.decode(values[i+1].split(';')[0]);
                     return key?  value.split(key):value;
                 }
                 i++;
@@ -52,6 +53,18 @@ var myCookie = {
         date.setTime(date.getTime()-1);
         removeValue += "expires=" + date.toGMTString();
         document.cookie = removeValue;
+    },
+    // 轉成 Base64 編碼 (簡易加密)
+    // 參考 https://www.wfublog.com/2020/07/js-string-encryption-decryption-aes.html
+    "encode" : function (str) {
+        str = encodeURI(str); // 轉成URL格式，解決中文無法使用btoa
+        str = btoa(str); // 將字串轉換為 Base64 編碼
+        return str;
+    },
+    "decode" : function (str) {
+        str = atob(str); // 將 Base64 編碼還原回字串
+        str = decodeURI(str); // 還原中文
+        return str;
     }
 }
 /*參考 https://shubo.io/cookies/
